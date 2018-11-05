@@ -33,7 +33,11 @@ before_script:
 
 git:
   variables:
-    IMAGE: powershell:6.1.0-rc.1-ubuntu-18.04
+    LATEST: "true"
+  <<: *build_definition
+
+git-ssh:
+  variables:
     LATEST: "true"
   <<: *build_definition
 

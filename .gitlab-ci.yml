@@ -23,7 +23,7 @@ before_script:
     - docker build
         -t "${REPOSITORY}:${VARIANT}"
         --cache-from "${REPOSITORY}:${VARIANT}"
-        --build-arg IMAGE="mcr.microsoft.com:${CI_PROJECT_NAME}:${PS_VERSION}-${OS_VERSION}"
+        --build-arg IMAGE="mcr.microsoft.com/${CI_PROJECT_NAME}:${PS_VERSION}-${OS_VERSION}"
         "${CI_JOB_NAME}/"
     - if [ "${LATEST}" = true ]; then
         docker tag "${REPOSITORY}:${VARIANT}" "${REPOSITORY}:${CI_JOB_NAME}";

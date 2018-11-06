@@ -9,8 +9,6 @@ stages:
 variables:
   DOCKER_DRIVER: overlay2
   REPOSITORY: "${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}"
-  PS_VERSION: "6.1.0"
-  OS_VERSION: "ubuntu-18.04"
 
 before_script:
   - echo $REGISTRY_PASSWORD | docker login -u $REGISTRY_USER --password-stdin
@@ -18,12 +16,12 @@ before_script:
 .build_template: &build_definition
   stage: build
   script:
-    - VARIANT="${PS_VERSION}-${OS_VERSION}-${CI_JOB_NAME}"
+    - VARIANT="${PS_VERSION}-${OS}-${OS_VERSION}-${CI_JOB_NAME}"
     - docker pull "${REPOSITORY}:${VARIANT}" || true
     - docker build
         -t "${REPOSITORY}:${VARIANT}"
         --cache-from "${REPOSITORY}:${VARIANT}"
-        --build-arg IMAGE="mcr.microsoft.com/${CI_PROJECT_NAME}:${PS_VERSION}-${OS_VERSION}"
+        --build-arg IMAGE="mcr.microsoft.com/${CI_PROJECT_NAME}:${PS_VERSION}-${OS}-${OS_VERSION}"
         "${CI_JOB_NAME}/"
     - if [ "${LATEST}" = true ]; then
         docker tag "${REPOSITORY}:${VARIANT}" "${REPOSITORY}:${CI_JOB_NAME}";
@@ -33,7 +31,9 @@ before_script:
 
 git:
   variables:
-    IMAGE: powershell:6.1.0-rc.1-ubuntu-18.04
+    PS_VERSION: "6.1.0"
+    OS: "ubuntu"
+    OS_VERSION: "18.04"
     LATEST: "true"
   <<: *build_definition
 

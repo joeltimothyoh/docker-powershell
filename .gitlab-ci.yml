@@ -23,7 +23,7 @@ before_script:
         --cache-from "${REPOSITORY}:${VARIANT}"
         --build-arg IMAGE="mcr.microsoft.com/${CI_PROJECT_NAME}:${PS_VERSION}-${OS}-${OS_VERSION}"
         "${CI_JOB_NAME}/"
-    - if [ "${LATEST}" = true ]; then
+    - if [ "${DEFAULT}" = true ]; then
         docker tag "${REPOSITORY}:${VARIANT}" "${REPOSITORY}:${CI_JOB_NAME}";
       fi
     - docker images
@@ -34,7 +34,7 @@ git:
     PS_VERSION: "6.1.0"
     OS: "ubuntu"
     OS_VERSION: "18.04"
-    LATEST: "true"
+    DEFAULT: "true"
   <<: *build_definition
 
 after_script:

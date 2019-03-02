@@ -35,11 +35,11 @@ before_script:
 git-ubuntu:
   variables:
     TOOL_VARIANT: "git"
-    TOOL_OS_DEFAULT: "true"
-    TOOL_DEFAULT: "true"
     PS_VERSION: "6.1.0"
     OS: "ubuntu"
     OS_VARIANT: "18.04"
+    TOOL_OS_DEFAULT: "true"
+    TOOL_DEFAULT: "true"
   <<: *build_definition
 
 after_script:

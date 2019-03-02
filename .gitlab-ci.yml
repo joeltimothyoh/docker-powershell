@@ -42,5 +42,14 @@ git-ubuntu:
     TOOL_DEFAULT: "true"
   <<: *build_definition
 
+git-alpine:
+  variables:
+    TOOL_VARIANT: "git"
+    PS_VERSION: "6.1.0"
+    OS: "alpine"
+    OS_VARIANT: "3.8"
+    TOOL_OS_DEFAULT: "true"
+  <<: *build_definition
+
 after_script:
   - docker logout

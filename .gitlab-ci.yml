@@ -8,7 +8,8 @@ stages:
 
 variables:
   DOCKER_DRIVER: overlay2
-  REPOSITORY: "${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}"
+  IMAGE_NAME: "powershell"
+  REPOSITORY: "${CI_PROJECT_NAMESPACE}/${IMAGE_NAME}"
 
 before_script:
   - echo $REGISTRY_PASSWORD | docker login -u $REGISTRY_USER --password-stdin
@@ -17,11 +18,12 @@ before_script:
   stage: build
   script:
     - VARIANT="${PS_VERSION}-${OS}-${OS_VARIANT}-${TOOL_VARIANT}"
+    - BASE_IMAGE="mcr.microsoft.com/${IMAGE_NAME}:${PS_VERSION}-${OS}-${OS_VARIANT}"
     - docker pull "${REPOSITORY}:${VARIANT}" || true
     - docker build
         --cache-from "${REPOSITORY}:${VARIANT}"
         -t "${REPOSITORY}:${VARIANT}"
-        --build-arg IMAGE="mcr.microsoft.com/${CI_PROJECT_NAME}:${PS_VERSION}-${OS}-${OS_VARIANT}"
+        --build-arg BASE_IMAGE="${BASE_IMAGE}"
         "${TOOL_VARIANT}/${OS}/"
     - if [ "${TOOL_OS_DEFAULT}" = 'true' ]; then
         docker tag "${REPOSITORY}:${VARIANT}" "${REPOSITORY}:${TOOL_VARIANT}-${OS}";

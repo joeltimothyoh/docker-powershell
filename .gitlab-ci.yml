@@ -11,11 +11,10 @@ variables:
   IMAGE_NAME: "powershell"
   REPOSITORY: "${CI_PROJECT_NAMESPACE}/${IMAGE_NAME}"
 
-before_script:
-  - echo $REGISTRY_PASSWORD | docker login -u $REGISTRY_USER --password-stdin
-
 .build_template: &build_definition
   stage: build
+  before_script:
+    - echo $REGISTRY_PASSWORD | docker login -u $REGISTRY_USER --password-stdin
   script:
     - VARIANT="${PS_VERSION}-${OS}-${OS_VARIANT}-${TOOL_VARIANT}"
     - BASE_IMAGE="mcr.microsoft.com/${IMAGE_NAME}:${PS_VERSION}-${OS}-${OS_VARIANT}"
@@ -33,6 +32,8 @@ before_script:
       fi
     - docker images
     - docker push "${REPOSITORY}"
+  after_script:
+    - docker logout
 
 git-ubuntu:
   variables:
@@ -52,6 +53,3 @@ git-alpine:
     OS_VARIANT: "3.8"
     TOOL_OS_DEFAULT: "true"
   <<: *build_definition
-
-after_script:
-  - docker logout

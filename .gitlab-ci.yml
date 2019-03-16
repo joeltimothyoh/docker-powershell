@@ -35,21 +35,39 @@ variables:
   after_script:
     - docker logout
 
-git-ubuntu:
+.ubuntu_template:
   variables:
-    TOOL_VARIANT: "git"
     PS_VERSION: "6.1.0"
     OS: "ubuntu"
     OS_VARIANT: "18.04"
-    TOOL_OS_DEFAULT: "true"
-    TOOL_DEFAULT: "true"
-  <<: *build_definition
-
-git-alpine:
+.alpine_template:
   variables:
-    TOOL_VARIANT: "git"
     PS_VERSION: "6.1.0"
     OS: "alpine"
     OS_VARIANT: "3.8"
+
+git-ubuntu:
+  extends: .ubuntu_template
+  variables:
+    TOOL_VARIANT: "git"
+    TOOL_OS_DEFAULT: "true"
+    TOOL_DEFAULT: "true"
+  <<: *build_definition
+git-alpine:
+  extends: .alpine_template
+  variables:
+    TOOL_VARIANT: "git"
+  <<: *build_definition
+
+git-ssh-ubuntu:
+  extends: .ubuntu_template
+  variables:
+    TOOL_VARIANT: "git-ssh"
+    TOOL_DEFAULT: "true"
+  <<: *build_definition
+git-ssh-alpine:
+  extends: .alpine_template
+  variables:
+    TOOL_VARIANT: "git-ssh"
     TOOL_OS_DEFAULT: "true"
   <<: *build_definition

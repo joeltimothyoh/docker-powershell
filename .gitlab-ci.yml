@@ -57,6 +57,7 @@ git-alpine:
   extends: .alpine_template
   variables:
     TOOL_VARIANT: "git"
+    TOOL_OS_DEFAULT: "true"
   <<: *build_definition
 
 git-ssh-ubuntu:

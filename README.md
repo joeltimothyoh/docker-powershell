@@ -3,7 +3,7 @@
 [pipeline-default-badge]: https://gitlab.com/joeltimothyoh/docker-powershell/badges/master/pipeline.svg
 [pipeline-default-link]: https://gitlab.com/joeltimothyoh/docker-powershell/commits/master
 
-Powershell on Docker with tools based on `mcr.microsoft.com/powershell`.
+Powershell on Docker with tools, based on `mcr.microsoft.com/powershell`.
 
 [![powershell-version-badge][]][powershell-metadata-link] [![powershell-layers-badge][]][powershell-metadata-link]
 

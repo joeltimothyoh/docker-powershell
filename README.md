@@ -1,8 +1,15 @@
-# docker-powershell
+# docker-powershell [![pipeline-default-badge][]][pipeline-default-link]
 
-[![pipeline status](https://gitlab.com/joeltimothyoh/docker-powershell/badges/master/pipeline.svg)](https://gitlab.com/joeltimothyoh/docker-powershell/commits/master)
+[pipeline-default-badge]: https://gitlab.com/joeltimothyoh/docker-powershell/badges/master/pipeline.svg
+[pipeline-default-link]: https://hub.docker.com/r/joeltimothyoh/powershell
 
 Docker images with tools based on `mcr.microsoft.com/powershell`.
+
+[![powershell-version-badge][]][powershell-metadata-link] [![powershell-layers-badge][]][powershell-metadata-link]
+
+[powershell-version-badge]: https://images.microbadger.com/badges/version/joeltimothyoh/powershell.svg
+[powershell-layers-badge]: https://images.microbadger.com/badges/image/joeltimothyoh/powershell.svg
+[powershell-metadata-link]: https://microbadger.com/images/joeltimothyoh/powershell
 
 [![dockerhub-logo][]][dockerhub-link]
 

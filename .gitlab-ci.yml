@@ -64,11 +64,12 @@ git-ssh-ubuntu:
   extends: .ubuntu_template
   variables:
     TOOL_VARIANT: "git-ssh"
-    TOOL_DEFAULT: "true"
+    TOOL_OS_DEFAULT: "true"
   <<: *build_definition
 git-ssh-alpine:
   extends: .alpine_template
   variables:
     TOOL_VARIANT: "git-ssh"
     TOOL_OS_DEFAULT: "true"
+    TOOL_DEFAULT: "true"
   <<: *build_definition

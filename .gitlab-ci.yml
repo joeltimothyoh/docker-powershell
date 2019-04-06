@@ -30,6 +30,9 @@ variables:
     - if [ "${TOOL_DEFAULT}" = 'true' ]; then
         docker tag "${REPOSITORY}:${VARIANT}" "${REPOSITORY}:${TOOL_VARIANT}";
       fi
+    - if [ "${LATEST}" = 'true' ]; then
+        docker tag "${REPOSITORY}:${VARIANT}" "${REPOSITORY}:latest";
+      fi
     - docker images
     - if [ "${CI_COMMIT_REF_NAME}" = 'master' ]; then
         docker push "${REPOSITORY}";
@@ -54,6 +57,7 @@ git-ubuntu:
     TOOL_VARIANT: "git"
     TOOL_OS_DEFAULT: "true"
     TOOL_DEFAULT: "true"
+    LATEST: "true"
   <<: *build_definition
 git-alpine:
   extends: .alpine_template

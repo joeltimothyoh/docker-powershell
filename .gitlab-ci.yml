@@ -60,9 +60,6 @@ variables:
     PS_VERSION: "6.1.0"
     TOOL_VARIANT: "git"
     PS_OS_TOOL_DEFAULT: "true"
-    TOOL_OS_DEFAULT: "true"
-    TOOL_DEFAULT: "true"
-    LATEST: "true"
   <<: *build_definition
 6.1.0-alpine-3.8-git:
   extends: .alpine_3.8_template
@@ -70,7 +67,6 @@ variables:
     PS_VERSION: "6.1.0"
     TOOL_VARIANT: "git"
     PS_OS_TOOL_DEFAULT: "true"
-    TOOL_OS_DEFAULT: "true"
   <<: *build_definition
 6.2.0-ubuntu-18.04-git:
   extends: .ubuntu_18.04_template
@@ -78,6 +74,9 @@ variables:
     PS_VERSION: "6.2.0"
     TOOL_VARIANT: "git"
     PS_OS_TOOL_DEFAULT: "true"
+    TOOL_OS_DEFAULT: "true"
+    TOOL_DEFAULT: "true"
+    LATEST: "true"
   <<: *build_definition
 6.2.0-alpine-3.8-git:
   extends: .alpine_3.8_template
@@ -85,6 +84,7 @@ variables:
     PS_VERSION: "6.2.0"
     TOOL_VARIANT: "git"
     PS_OS_TOOL_DEFAULT: "true"
+    TOOL_OS_DEFAULT: "true"
   <<: *build_definition
 
 6.1.0-ubuntu-18.04-git-ssh:
@@ -93,7 +93,6 @@ variables:
     PS_VERSION: "6.1.0"
     TOOL_VARIANT: "git-ssh"
     PS_OS_TOOL_DEFAULT: "true"
-    TOOL_OS_DEFAULT: "true"
   <<: *build_definition
 6.1.0-alpine-3.8-git-ssh:
   extends: .alpine_3.8_template
@@ -101,8 +100,6 @@ variables:
     PS_VERSION: "6.1.0"
     TOOL_VARIANT: "git-ssh"
     PS_OS_TOOL_DEFAULT: "true"
-    TOOL_OS_DEFAULT: "true"
-    TOOL_DEFAULT: "true"
   <<: *build_definition
 6.2.0-ubuntu-18.04-git-ssh:
   extends: .ubuntu_18.04_template
@@ -110,6 +107,7 @@ variables:
     PS_VERSION: "6.2.0"
     TOOL_VARIANT: "git-ssh"
     PS_OS_TOOL_DEFAULT: "true"
+    TOOL_OS_DEFAULT: "true"
   <<: *build_definition
 6.2.0-alpine-3.8-git-ssh:
   extends: .alpine_3.8_template
@@ -117,4 +115,6 @@ variables:
     PS_VERSION: "6.2.0"
     TOOL_VARIANT: "git-ssh"
     PS_OS_TOOL_DEFAULT: "true"
+    TOOL_OS_DEFAULT: "true"
+    TOOL_DEFAULT: "true"
   <<: *build_definition

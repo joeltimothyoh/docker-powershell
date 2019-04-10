@@ -24,6 +24,9 @@ variables:
         -t "${REPOSITORY}:${VARIANT}"
         --build-arg BASE_IMAGE="${BASE_IMAGE}"
         "${TOOL_VARIANT}/${OS}/"
+    - if [ "${PS_OS_TOOL_DEFAULT}" = 'true' ]; then
+        docker tag "${REPOSITORY}:${VARIANT}" "${REPOSITORY}:${PS_VERSION}-${OS}-${TOOL_VARIANT}";
+      fi
     - if [ "${TOOL_OS_DEFAULT}" = 'true' ]; then
         docker tag "${REPOSITORY}:${VARIANT}" "${REPOSITORY}:${TOOL_VARIANT}-${OS}";
       fi
@@ -55,6 +58,7 @@ git-ubuntu:
   extends: .ubuntu_template
   variables:
     TOOL_VARIANT: "git"
+    PS_OS_TOOL_DEFAULT: "true"
     TOOL_OS_DEFAULT: "true"
     TOOL_DEFAULT: "true"
     LATEST: "true"
@@ -76,6 +80,7 @@ git-ssh-alpine:
   extends: .alpine_template
   variables:
     TOOL_VARIANT: "git-ssh"
+    PS_OS_TOOL_DEFAULT: "true"
     TOOL_OS_DEFAULT: "true"
     TOOL_DEFAULT: "true"
   <<: *build_definition

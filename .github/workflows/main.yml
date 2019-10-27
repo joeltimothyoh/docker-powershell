@@ -98,8 +98,8 @@ jobs:
         if [ "${TAG_LATEST}" = 'true' ]; then
           docker tag "${BUILD_REGISTRY_NAMESPACE}/${IMAGE_NAME}:${BUILD_TAG_FULL}" "${BUILD_REGISTRY_NAMESPACE}/${IMAGE_NAME}:latest";
         fi
-        docker inspect "${BUILD_REGISTRY_NAMESPACE}/${IMAGE_NAME}:${BUILD_TAG_FULL}"
         docker images
+        docker inspect "${BUILD_REGISTRY_NAMESPACE}/${IMAGE_NAME}:${BUILD_TAG_FULL}"
     - name: Push image
       if: startsWith(github.ref, 'refs/tags/')
       run: |
@@ -195,8 +195,8 @@ jobs:
         if [ "${TAG_LATEST}" = 'true' ]; then
           docker tag "${BUILD_REGISTRY_NAMESPACE}/${IMAGE_NAME}:${BUILD_TAG_FULL}" "${BUILD_REGISTRY_NAMESPACE}/${IMAGE_NAME}:latest";
         fi
-        docker inspect "${BUILD_REGISTRY_NAMESPACE}/${IMAGE_NAME}:${BUILD_TAG_FULL}"
         docker images
+        docker inspect "${BUILD_REGISTRY_NAMESPACE}/${IMAGE_NAME}:${BUILD_TAG_FULL}"
     - name: Push image
       if: startsWith(github.ref, 'refs/tags/')
       run: |

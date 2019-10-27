@@ -11,6 +11,6 @@
 [badge-custom-dockerhub-repo-img]: https://img.shields.io/badge/docker%20hub-joeltimothyoh/powershell-blue.svg?logo=docker&logoColor=2596EC&color=29405B&label=&labelColor=&style=popout-square
 [badge-custom-dockerhub-repo-src]: https://hub.docker.com/r/joeltimothyoh/powershell
 
-PowerShell on Docker with tools, based on `mcr.microsoft.com/powershell`.
+[PowerShell](https://github.com/PowerShell/PowerShell#-powershell) on Docker with tools, based on [`mcr.microsoft.com/powershell`](https://hub.docker.com/_/microsoft-powershell).
 
 [![badge-custom-dockerhub-repo-img][]][badge-custom-dockerhub-repo-src]

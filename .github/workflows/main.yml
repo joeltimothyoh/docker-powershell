@@ -27,7 +27,7 @@ jobs:
           OS: alpine
           OS_VARIANT: 3.8
           TOOL_VARIANT: git-ssh
-          TAG_TOOL_OS: true
+          TAG_OS_TOOL: true
           TAG_TOOL: true
     env:
       IMAGE_NAME: powershell
@@ -36,7 +36,7 @@ jobs:
       OS_VARIANT: ${{ matrix.OS_VARIANT }}
       TOOL_VARIANT: ${{ matrix.TOOL_VARIANT }}
       TAG_PS_OS_TOOL: ${{ matrix.TAG_PS_OS_TOOL }}
-      TAG_TOOL_OS: ${{ matrix.TAG_TOOL_OS }}
+      TAG_OS_TOOL: ${{ matrix.TAG_OS_TOOL }}
       TAG_TOOL: ${{ matrix.TAG_TOOL }}
       TAG_LATEST: ${{ matrix.TAG_LATEST }}
       BASE_REGISTRY_NAMESPACE: mcr.microsoft.com
@@ -70,7 +70,7 @@ jobs:
         echo "OS_VARIANT: $OS_VARIANT"
         echo "TOOL_VARIANT: $TOOL_VARIANT"
         echo "TAG_PS_OS_TOOL: $TAG_PS_OS_TOOL"
-        echo "TAG_TOOL_OS: $TAG_TOOL_OS"
+        echo "TAG_OS_TOOL: $TAG_OS_TOOL"
         echo "TAG_TOOL: $TAG_TOOL"
         echo "TAG_LATEST: $TAG_LATEST"
         echo "BASE_REGISTRY_NAMESPACE: $BASE_REGISTRY_NAMESPACE"
@@ -89,8 +89,8 @@ jobs:
         if [ "${TAG_PS_OS_TOOL}" = 'true' ]; then
           docker tag "${BUILD_REGISTRY_NAMESPACE}/${IMAGE_NAME}:${BUILD_TAG_FULL}" "${BUILD_REGISTRY_NAMESPACE}/${IMAGE_NAME}:${PS_VERSION}-${OS}-${TOOL_VARIANT}";
         fi
-        if [ "${TAG_TOOL_OS}" = 'true' ]; then
-          docker tag "${BUILD_REGISTRY_NAMESPACE}/${IMAGE_NAME}:${BUILD_TAG_FULL}" "${BUILD_REGISTRY_NAMESPACE}/${IMAGE_NAME}:${TOOL_VARIANT}-${OS}";
+        if [ "${TAG_OS_TOOL}" = 'true' ]; then
+          docker tag "${BUILD_REGISTRY_NAMESPACE}/${IMAGE_NAME}:${BUILD_TAG_FULL}" "${BUILD_REGISTRY_NAMESPACE}/${IMAGE_NAME}:${OS}-${TOOL_VARIANT}";
         fi
         if [ "${TAG_TOOL}" = 'true' ]; then
           docker tag "${BUILD_REGISTRY_NAMESPACE}/${IMAGE_NAME}:${BUILD_TAG_FULL}" "${BUILD_REGISTRY_NAMESPACE}/${IMAGE_NAME}:${TOOL_VARIANT}";
@@ -123,7 +123,7 @@ jobs:
           OS: ubuntu
           OS_VARIANT: 18.04
           TOOL_VARIANT: git
-          TAG_TOOL_OS: true
+          TAG_OS_TOOL: true
           TAG_TOOL: true
           TAG_LATEST: true
     env:
@@ -133,7 +133,7 @@ jobs:
       OS_VARIANT: ${{ matrix.OS_VARIANT }}
       TOOL_VARIANT: ${{ matrix.TOOL_VARIANT }}
       TAG_PS_OS_TOOL: ${{ matrix.TAG_PS_OS_TOOL }}
-      TAG_TOOL_OS: ${{ matrix.TAG_TOOL_OS }}
+      TAG_OS_TOOL: ${{ matrix.TAG_OS_TOOL }}
       TAG_TOOL: ${{ matrix.TAG_TOOL }}
       TAG_LATEST: ${{ matrix.TAG_LATEST }}
       BASE_REGISTRY_NAMESPACE: mcr.microsoft.com
@@ -167,7 +167,7 @@ jobs:
         echo "OS_VARIANT: $OS_VARIANT"
         echo "TOOL_VARIANT: $TOOL_VARIANT"
         echo "TAG_PS_OS_TOOL: $TAG_PS_OS_TOOL"
-        echo "TAG_TOOL_OS: $TAG_TOOL_OS"
+        echo "TAG_OS_TOOL: $TAG_OS_TOOL"
         echo "TAG_TOOL: $TAG_TOOL"
         echo "TAG_LATEST: $TAG_LATEST"
         echo "BASE_REGISTRY_NAMESPACE: $BASE_REGISTRY_NAMESPACE"
@@ -186,8 +186,8 @@ jobs:
         if [ "${TAG_PS_OS_TOOL}" = 'true' ]; then
           docker tag "${BUILD_REGISTRY_NAMESPACE}/${IMAGE_NAME}:${BUILD_TAG_FULL}" "${BUILD_REGISTRY_NAMESPACE}/${IMAGE_NAME}:${PS_VERSION}-${OS}-${TOOL_VARIANT}";
         fi
-        if [ "${TAG_TOOL_OS}" = 'true' ]; then
-          docker tag "${BUILD_REGISTRY_NAMESPACE}/${IMAGE_NAME}:${BUILD_TAG_FULL}" "${BUILD_REGISTRY_NAMESPACE}/${IMAGE_NAME}:${TOOL_VARIANT}-${OS}";
+        if [ "${TAG_OS_TOOL}" = 'true' ]; then
+          docker tag "${BUILD_REGISTRY_NAMESPACE}/${IMAGE_NAME}:${BUILD_TAG_FULL}" "${BUILD_REGISTRY_NAMESPACE}/${IMAGE_NAME}:${OS}-${TOOL_VARIANT}";
         fi
         if [ "${TAG_TOOL}" = 'true' ]; then
           docker tag "${BUILD_REGISTRY_NAMESPACE}/${IMAGE_NAME}:${BUILD_TAG_FULL}" "${BUILD_REGISTRY_NAMESPACE}/${IMAGE_NAME}:${TOOL_VARIANT}";

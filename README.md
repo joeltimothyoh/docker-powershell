@@ -1,17 +1,16 @@
-# docker-powershell [![pipeline-default-badge][]][pipeline-default-link]
+# docker-powershell
 
-[pipeline-default-badge]: https://gitlab.com/joeltimothyoh/docker-powershell/badges/master/pipeline.svg
-[pipeline-default-link]: https://gitlab.com/joeltimothyoh/docker-powershell/commits/master
+ [![badge-build-github-workflows-img][]][badge-build-github-workflows-src] [![badge-size-microbadger-size-tag-img][]][badge-size-microbadger-size-tag-src] [![badge-size-microbadger-layers-tag-img][]][badge-size-microbadger-layers-tag-src]
 
-Powershell on Docker with tools, based on `mcr.microsoft.com/powershell`.
+[badge-build-github-workflows-img]: https://github.com/joeltimothyoh/docker-powershell/workflows/build/badge.svg
+[badge-build-github-workflows-src]: https://github.com/joeltimothyoh/docker-powershell/actions
+[badge-size-microbadger-size-tag-img]: https://img.shields.io/microbadger/image-size/joeltimothyoh/powershell/latest
+[badge-size-microbadger-size-tag-src]: https://microbadger.com/images/joeltimothyoh/powershell
+[badge-size-microbadger-layers-tag-img]: https://img.shields.io/microbadger/layers/joeltimothyoh/powershell/latest
+[badge-size-microbadger-layers-tag-src]: https://microbadger.com/images/joeltimothyoh/powershell
+[badge-custom-dockerhub-repo-img]: https://img.shields.io/badge/docker%20hub-joeltimothyoh/powershell-blue.svg?logo=docker&logoColor=2596EC&color=29405B&label=&labelColor=&style=popout-square
+[badge-custom-dockerhub-repo-src]: https://hub.docker.com/r/joeltimothyoh/powershell
 
-[![powershell-version-badge][]][powershell-metadata-link] [![powershell-layers-badge][]][powershell-metadata-link]
+PowerShell on Docker with tools, based on `mcr.microsoft.com/powershell`.
 
-[powershell-version-badge]: https://images.microbadger.com/badges/version/joeltimothyoh/powershell.svg
-[powershell-layers-badge]: https://images.microbadger.com/badges/image/joeltimothyoh/powershell.svg
-[powershell-metadata-link]: https://microbadger.com/images/joeltimothyoh/powershell
-
-[![powershell-dockerhub-badge][]][powershell-dockerhub-link]
-
-[powershell-dockerhub-badge]: https://img.shields.io/badge/docker%20hub-joeltimothyoh/powershell-blue.svg?logo=docker&logoColor=2596EC&color=29405B&label=&labelColor=&style=popout-square
-[powershell-dockerhub-link]: https://hub.docker.com/r/joeltimothyoh/powershell
+[![badge-custom-dockerhub-repo-img][]][badge-custom-dockerhub-repo-src]

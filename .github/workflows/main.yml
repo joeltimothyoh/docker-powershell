@@ -128,6 +128,12 @@ jobs:
           TAG_OS_TOOL: true
           TAG_TOOL: true
           TAG_LATEST: true
+        - PS_VERSION: 6.2.0
+          OS: ubuntu
+          OS_VARIANT: 18.04
+          TOOL_VARIANT: git-sudo
+          TAG_OS_TOOL: true
+          TAG_TOOL: true
     env:
       IMAGE_NAME: powershell
       PS_VERSION: ${{ matrix.PS_VERSION }}

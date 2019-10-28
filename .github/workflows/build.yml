@@ -104,8 +104,7 @@ jobs:
         docker inspect "${BUILD_REGISTRY_NAMESPACE}/${IMAGE_NAME}:${BUILD_TAG_FULL}"
     - name: Push image
       if: startsWith(github.ref, 'refs/tags/')
-      run: |
-        docker push "${BUILD_REGISTRY_NAMESPACE}/${IMAGE_NAME}"
+      run: docker push "${BUILD_REGISTRY_NAMESPACE}/${IMAGE_NAME}"
     - name: Clean-up
       run: docker logout
       if: always()
@@ -209,8 +208,7 @@ jobs:
         docker inspect "${BUILD_REGISTRY_NAMESPACE}/${IMAGE_NAME}:${BUILD_TAG_FULL}"
     - name: Push image
       if: startsWith(github.ref, 'refs/tags/')
-      run: |
-        docker push "${BUILD_REGISTRY_NAMESPACE}/${IMAGE_NAME}"
+      run: docker push "${BUILD_REGISTRY_NAMESPACE}/${IMAGE_NAME}"
     - name: Clean-up
       run: docker logout
       if: always()

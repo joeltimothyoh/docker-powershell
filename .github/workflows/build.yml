@@ -102,6 +102,8 @@ jobs:
         fi
         docker images
         docker inspect "${BUILD_REGISTRY_NAMESPACE}/${IMAGE_NAME}:${BUILD_TAG_FULL}"
+    - name: Test image
+      run: docker run -t --rm "${BUILD_REGISTRY_NAMESPACE}/${IMAGE_NAME}:${BUILD_TAG_FULL}" pwsh -c '$PSVersionTable'
     - name: Push image
       if: startsWith(github.ref, 'refs/tags/')
       run: docker push "${BUILD_REGISTRY_NAMESPACE}/${IMAGE_NAME}"
@@ -206,6 +208,8 @@ jobs:
         fi
         docker images
         docker inspect "${BUILD_REGISTRY_NAMESPACE}/${IMAGE_NAME}:${BUILD_TAG_FULL}"
+    - name: Test image
+      run: docker run -t --rm "${BUILD_REGISTRY_NAMESPACE}/${IMAGE_NAME}:${BUILD_TAG_FULL}" pwsh -c '$PSVersionTable'
     - name: Push image
       if: startsWith(github.ref, 'refs/tags/')
       run: docker push "${BUILD_REGISTRY_NAMESPACE}/${IMAGE_NAME}"

@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-18.04
     strategy:
       matrix:
-        PS_VERSION: [6.2.0, 6.1.3, 6.1.0]
+        PS_VERSION: [6.2.3]
         OS: [alpine]
         OS_VARIANT: [3.8]
         TOOL_VARIANT: [git, git-ssh, git-sudo]
@@ -116,7 +116,7 @@ jobs:
     runs-on: ubuntu-18.04
     strategy:
       matrix:
-        PS_VERSION: [6.2.0, 6.1.3, 6.1.0]
+        PS_VERSION: [6.2.3]
         OS: [ubuntu]
         OS_VARIANT: [18.04]
         TOOL_VARIANT: [git, git-ssh, git-sudo]

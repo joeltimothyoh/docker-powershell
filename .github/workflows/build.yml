@@ -17,15 +17,15 @@ jobs:
       matrix:
         PS_VERSION: [7.0.0]
         OS: [alpine]
-        OS_VARIANT: [3.10, 3.9, 3.8]
+        OS_VARIANT: ['3.10', 3.9, 3.8]
         TOOL_VARIANT: [git, git-ssh, git-sudo]
         include:
         - OS: alpine
-          OS_VARIANT: 3.10
+          OS_VARIANT: '3.10'
           TAG_PS_OS_TOOL: true
         - PS_VERSION: 7.0.0
           OS: alpine
-          OS_VARIANT: 3.10
+          OS_VARIANT: '3.10'
           TOOL_VARIANT: git-ssh
           TAG_OS_TOOL: true
           TAG_TOOL: true

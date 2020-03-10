@@ -1,6 +1,6 @@
 # docker-powershell
 
- [![badge-build-github-workflows-img][]][badge-build-github-workflows-src] [![badge-size-microbadger-size-tag-img][]][badge-size-microbadger-size-tag-src] [![badge-size-microbadger-layers-tag-img][]][badge-size-microbadger-layers-tag-src]
+[![badge-build-github-workflows-img][]][badge-build-github-workflows-src] [![badge-size-microbadger-size-tag-img][]][badge-size-microbadger-size-tag-src] [![badge-size-microbadger-layers-tag-img][]][badge-size-microbadger-layers-tag-src]
 
 [badge-build-github-workflows-img]: https://github.com/joeltimothyoh/docker-powershell/workflows/build/badge.svg
 [badge-build-github-workflows-src]: https://github.com/joeltimothyoh/docker-powershell/actions

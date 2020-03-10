@@ -131,7 +131,7 @@ jobs:
           TAG_OS_TOOL: true
           TAG_TOOL: true
           TAG_LATEST: true
-        - PS_VERSION: 6.2.3
+        - PS_VERSION: 6.2.4
           OS: ubuntu
           OS_VARIANT: 18.04
           TOOL_VARIANT: git-sudo

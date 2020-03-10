@@ -15,17 +15,17 @@ jobs:
     runs-on: ubuntu-18.04
     strategy:
       matrix:
-        PS_VERSION: [6.2.4]
+        PS_VERSION: [7.0.0]
         OS: [alpine]
-        OS_VARIANT: [3.8]
+        OS_VARIANT: [3.10, 3.9, 3.8]
         TOOL_VARIANT: [git, git-ssh, git-sudo]
         include:
         - OS: alpine
-          OS_VARIANT: 3.8
+          OS_VARIANT: 3.10
           TAG_PS_OS_TOOL: true
-        - PS_VERSION: 6.2.4
+        - PS_VERSION: 7.0.0
           OS: alpine
-          OS_VARIANT: 3.8
+          OS_VARIANT: 3.10
           TOOL_VARIANT: git-ssh
           TAG_OS_TOOL: true
           TAG_TOOL: true
@@ -60,7 +60,7 @@ jobs:
         docker info
         docker version
     - name: Login to docker registry
-      run: echo "${DOCKERHUB_REGISTRY_PASSWORD}" | docker login -u "${DOCKERHUB_REGISTRY_USER}" --password-stdin
+      run: echo "${DOCKERHUB_REGISTRY_PASSWORD}" | docker login -u "${DOCKERHUB_REGISTRY_USER}" --password-stdingla
       env:
         DOCKERHUB_REGISTRY_USER: joeltimothyoh
         DOCKERHUB_REGISTRY_PASSWORD: ${{ secrets.DOCKERHUB_REGISTRY_PASSWORD }}
@@ -116,7 +116,7 @@ jobs:
     runs-on: ubuntu-18.04
     strategy:
       matrix:
-        PS_VERSION: [6.2.4]
+        PS_VERSION: [7.0.0]
         OS: [ubuntu]
         OS_VARIANT: [18.04]
         TOOL_VARIANT: [git, git-ssh, git-sudo]
@@ -124,14 +124,14 @@ jobs:
         - OS: ubuntu
           OS_VARIANT: 18.04
           TAG_PS_OS_TOOL: true
-        - PS_VERSION: 6.2.4
+        - PS_VERSION: 7.0.0
           OS: ubuntu
           OS_VARIANT: 18.04
           TOOL_VARIANT: git
           TAG_OS_TOOL: true
           TAG_TOOL: true
           TAG_LATEST: true
-        - PS_VERSION: 6.2.4
+        - PS_VERSION: 7.0.0
           OS: ubuntu
           OS_VARIANT: 18.04
           TOOL_VARIANT: git-sudo

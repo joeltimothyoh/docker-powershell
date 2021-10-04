@@ -109,7 +109,7 @@ jobs:
       run: docker run -t --rm "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${BUILD_TAG_FULL}" pwsh -c '$PSVersionTable'
     - name: Push image
       if: startsWith(github.ref, 'refs/tags/')
-      run: docker push "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}"
+      run: docker push -a "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}"
     - name: Clean-up
       if: always()
       run: docker logout
@@ -218,7 +218,7 @@ jobs:
       run: docker run -t --rm "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${BUILD_TAG_FULL}" pwsh -c '$PSVersionTable'
     - name: Push image
       if: startsWith(github.ref, 'refs/tags/')
-      run: docker push "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}"
+      run: docker push -a "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}"
     - name: Clean-up
       if: always()
       run: docker logout

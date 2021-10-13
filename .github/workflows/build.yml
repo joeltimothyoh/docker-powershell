@@ -15,15 +15,15 @@ jobs:
     runs-on: ubuntu-18.04
     strategy:
       matrix:
-        PS_VERSION: [7.0.3, 7.0.2, 7.0.1, 7.0.0]
+        PS_VERSION: [7.1.0]
         OS: [alpine]
-        OS_VARIANT: ['3.10', 3.9, 3.8]
+        OS_VARIANT: ['3.10']
         TOOL_VARIANT: [git, git-ssh, git-sudo]
         include:
         - OS: alpine
           OS_VARIANT: '3.10'
           TAG_PS_OS_TOOL: true
-        - PS_VERSION: 7.0.3
+        - PS_VERSION: 7.1.0
           OS: alpine
           OS_VARIANT: '3.10'
           TOOL_VARIANT: git-ssh

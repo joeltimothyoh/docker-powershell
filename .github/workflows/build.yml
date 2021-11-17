@@ -20,6 +20,12 @@ jobs:
         OS_VARIANT: ['3.10']
         TOOL_VARIANT: [git, git-ssh, git-sudo]
         include:
+        # Base and build image full tag
+        - PS_VERSION: 7.1.0
+          OS: alpine
+          OS_VARIANT: '3.10'
+          ARCHIVE: 20201116
+        # Build image default tagging
         - OS: alpine
           OS_VARIANT: '3.10'
           TAG_PS_OS_TOOL: true
@@ -40,10 +46,10 @@ jobs:
       TAG_LATEST: ${{ matrix.TAG_LATEST }}
       BASE_REGISTRY_NAMESPACE: mcr.microsoft.com
       BASE_IMAGE_NAME: powershell
-      BASE_TAG_FULL: ${{ matrix.PS_VERSION }}-${{ matrix.OS }}-${{ matrix.OS_VARIANT }}
+      BASE_TAG_FULL: ${{ matrix.PS_VERSION }}-${{ matrix.OS }}-${{ matrix.OS_VARIANT }}-${{ matrix.ARCHIVE }}
       BUILD_REGISTRY_NAMESPACE: joeltimothyoh
       BUILD_IMAGE_NAME: powershell
-      BUILD_TAG_FULL: ${{ matrix.PS_VERSION }}-${{ matrix.OS }}-${{ matrix.OS_VARIANT }}-${{ matrix.TOOL_VARIANT }}
+      BUILD_TAG_FULL: ${{ matrix.PS_VERSION }}-${{ matrix.OS }}-${{ matrix.OS_VARIANT }}-${{ matrix.ARCHIVE }}-${{ matrix.TOOL_VARIANT }}
       BUILD_CONTEXT: variants/${{ matrix.OS }}/${{ matrix.TOOL_VARIANT }}
     steps:
     - uses: actions/checkout@v1
@@ -91,6 +97,7 @@ jobs:
             -t "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${BUILD_TAG_FULL}" \
             --build-arg BASE_IMAGE="${BASE_REGISTRY_NAMESPACE}/${BASE_IMAGE_NAME}:${BASE_TAG_FULL}" \
             "$BUILD_CONTEXT"
+        docker tag "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${BUILD_TAG_FULL}" "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${PS_VERSION}-${OS}-${OS_VARIANT}-${TOOL_VARIANT}"
         if [ "${TAG_PS_OS_TOOL}" = 'true' ]; then
             docker tag "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${BUILD_TAG_FULL}" "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${PS_VERSION}-${OS}-${TOOL_VARIANT}"
         fi
@@ -122,6 +129,48 @@ jobs:
         OS_VARIANT: [20.04, 18.04]
         TOOL_VARIANT: [git, git-ssh, git-sudo]
         include:
+        # Base and build image full tag
+        - PS_VERSION: 7.1.4
+          OS: ubuntu
+          OS_VARIANT: 20.04
+          ARCHIVE: 20211005
+        - PS_VERSION: 7.1.3
+          OS: ubuntu
+          OS_VARIANT: 20.04
+          ARCHIVE: 20210803
+        - PS_VERSION: 7.1.2
+          OS: ubuntu
+          OS_VARIANT: 20.04
+          ARCHIVE: 20210211
+        - PS_VERSION: 7.1.1
+          OS: ubuntu
+          OS_VARIANT: 20.04
+          ARCHIVE: 20210125
+        - PS_VERSION: 7.1.0
+          OS: ubuntu
+          OS_VARIANT: 20.04
+          ARCHIVE: 20201215
+        - PS_VERSION: 7.1.4
+          OS: ubuntu
+          OS_VARIANT: 18.04
+          ARCHIVE: 20211005
+        - PS_VERSION: 7.1.3
+          OS: ubuntu
+          OS_VARIANT: 18.04
+          ARCHIVE: 20210803
+        - PS_VERSION: 7.1.2
+          OS: ubuntu
+          OS_VARIANT: 18.04
+          ARCHIVE: 20210211
+        - PS_VERSION: 7.1.1
+          OS: ubuntu
+          OS_VARIANT: 18.04
+          ARCHIVE: 20210125
+        - PS_VERSION: 7.1.0
+          OS: ubuntu
+          OS_VARIANT: 18.04
+          ARCHIVE: 20201215
+        # Build image default tagging
         - OS: ubuntu
           OS_VARIANT: 20.04
           TAG_PS_OS_TOOL: true
@@ -149,10 +198,10 @@ jobs:
       TAG_LATEST: ${{ matrix.TAG_LATEST }}
       BASE_REGISTRY_NAMESPACE: mcr.microsoft.com
       BASE_IMAGE_NAME: powershell
-      BASE_TAG_FULL: ${{ matrix.PS_VERSION }}-${{ matrix.OS }}-${{ matrix.OS_VARIANT }}
+      BASE_TAG_FULL: ${{ matrix.PS_VERSION }}-${{ matrix.OS }}-${{ matrix.OS_VARIANT }}-${{ matrix.ARCHIVE }}
       BUILD_REGISTRY_NAMESPACE: joeltimothyoh
       BUILD_IMAGE_NAME: powershell
-      BUILD_TAG_FULL: ${{ matrix.PS_VERSION }}-${{ matrix.OS }}-${{ matrix.OS_VARIANT }}-${{ matrix.TOOL_VARIANT }}
+      BUILD_TAG_FULL: ${{ matrix.PS_VERSION }}-${{ matrix.OS }}-${{ matrix.OS_VARIANT }}-${{ matrix.ARCHIVE }}-${{ matrix.TOOL_VARIANT }}
       BUILD_CONTEXT: variants/${{ matrix.OS }}/${{ matrix.TOOL_VARIANT }}
     steps:
     - uses: actions/checkout@v1
@@ -200,6 +249,7 @@ jobs:
             -t "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${BUILD_TAG_FULL}" \
             --build-arg BASE_IMAGE="${BASE_REGISTRY_NAMESPACE}/${BASE_IMAGE_NAME}:${BASE_TAG_FULL}" \
             "$BUILD_CONTEXT"
+        docker tag "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${BUILD_TAG_FULL}" "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${PS_VERSION}-${OS}-${OS_VARIANT}-${TOOL_VARIANT}"
         if [ "${TAG_PS_OS_TOOL}" = 'true' ]; then
             docker tag "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${BUILD_TAG_FULL}" "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${PS_VERSION}-${OS}-${TOOL_VARIANT}"
         fi

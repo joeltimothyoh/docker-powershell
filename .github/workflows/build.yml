@@ -15,12 +15,28 @@ jobs:
     runs-on: ubuntu-18.04
     strategy:
       matrix:
-        PS_VERSION: [7.1.5, 7.1.4, 7.1.3, 7.1.2, 7.1.1, 7.1.0]
+        PS_VERSION: [7.2.0, 7.1.5, 7.1.4]
         OS: [alpine]
-        OS_VARIANT: ['3.12', '3.11']
+        OS_VARIANT: ['3.13', '3.12', '3.11']
         TOOL_VARIANT: [git, git-ssh, git-sudo]
         include:
         # Base and build image full tag
+        - PS_VERSION: 7.2.0
+          OS: alpine
+          OS_VARIANT: '3.13'
+          ARCHIVE: 20211116
+        - PS_VERSION: 7.2.0
+          OS: alpine
+          OS_VARIANT: '3.12'
+          ARCHIVE: 20211116
+        - PS_VERSION: 7.2.0
+          OS: alpine
+          OS_VARIANT: '3.11'
+          ARCHIVE: 20211102
+        - PS_VERSION: 7.1.5
+          OS: alpine
+          OS_VARIANT: '3.13'
+          ARCHIVE: 20211021
         - PS_VERSION: 7.1.5
           OS: alpine
           OS_VARIANT: '3.12'
@@ -31,51 +47,23 @@ jobs:
           ARCHIVE: 20211021
         - PS_VERSION: 7.1.4
           OS: alpine
+          OS_VARIANT: '3.13'
+          ARCHIVE: 20211005
+        - PS_VERSION: 7.1.4
+          OS: alpine
           OS_VARIANT: '3.12'
           ARCHIVE: 20211005
         - PS_VERSION: 7.1.4
           OS: alpine
           OS_VARIANT: '3.11'
           ARCHIVE: 20211005
-        - PS_VERSION: 7.1.3
-          OS: alpine
-          OS_VARIANT: '3.12'
-          ARCHIVE: 20210803
-        - PS_VERSION: 7.1.3
-          OS: alpine
-          OS_VARIANT: '3.11'
-          ARCHIVE: 20210803
-        - PS_VERSION: 7.1.2
-          OS: alpine
-          OS_VARIANT: '3.12'
-          ARCHIVE: 20210211
-        - PS_VERSION: 7.1.2
-          OS: alpine
-          OS_VARIANT: '3.11'
-          ARCHIVE: 20210211
-        - PS_VERSION: 7.1.1
-          OS: alpine
-          OS_VARIANT: '3.12'
-          ARCHIVE: 20210125
-        - PS_VERSION: 7.1.1
-          OS: alpine
-          OS_VARIANT: '3.11'
-          ARCHIVE: 20210125
-        - PS_VERSION: 7.1.0
-          OS: alpine
-          OS_VARIANT: '3.12'
-          ARCHIVE: 20201215
-        - PS_VERSION: 7.1.0
-          OS: alpine
-          OS_VARIANT: '3.11'
-          ARCHIVE: 20201215
         # Build image default tagging
         - OS: alpine
-          OS_VARIANT: '3.12'
+          OS_VARIANT: '3.13'
           TAG_PS_OS_TOOL: true
-        - PS_VERSION: 7.1.5
+        - PS_VERSION: 7.2.0
           OS: alpine
-          OS_VARIANT: '3.12'
+          OS_VARIANT: '3.13'
           TOOL_VARIANT: git-ssh
           TAG_OS_TOOL: true
           TAG_TOOL: true
@@ -168,12 +156,20 @@ jobs:
     runs-on: ubuntu-18.04
     strategy:
       matrix:
-        PS_VERSION: [7.1.5, 7.1.4, 7.1.3, 7.1.2, 7.1.1, 7.1.0]
+        PS_VERSION: [7.2.0, 7.1.5, 7.1.4]
         OS: [ubuntu]
         OS_VARIANT: [20.04, 18.04]
         TOOL_VARIANT: [git, git-ssh, git-sudo]
         include:
         # Base and build image full tag
+        - PS_VERSION: 7.2.0
+          OS: ubuntu
+          OS_VARIANT: 20.04
+          ARCHIVE: 20211116
+        - PS_VERSION: 7.2.0
+          OS: ubuntu
+          OS_VARIANT: 18.04
+          ARCHIVE: 20211116
         - PS_VERSION: 7.1.5
           OS: ubuntu
           OS_VARIANT: 20.04
@@ -190,50 +186,18 @@ jobs:
           OS: ubuntu
           OS_VARIANT: 18.04
           ARCHIVE: 20211005
-        - PS_VERSION: 7.1.3
-          OS: ubuntu
-          OS_VARIANT: 20.04
-          ARCHIVE: 20210803
-        - PS_VERSION: 7.1.3
-          OS: ubuntu
-          OS_VARIANT: 18.04
-          ARCHIVE: 20210803
-        - PS_VERSION: 7.1.2
-          OS: ubuntu
-          OS_VARIANT: 20.04
-          ARCHIVE: 20210211
-        - PS_VERSION: 7.1.2
-          OS: ubuntu
-          OS_VARIANT: 18.04
-          ARCHIVE: 20210211
-        - PS_VERSION: 7.1.1
-          OS: ubuntu
-          OS_VARIANT: 20.04
-          ARCHIVE: 20210125
-        - PS_VERSION: 7.1.1
-          OS: ubuntu
-          OS_VARIANT: 18.04
-          ARCHIVE: 20210125
-        - PS_VERSION: 7.1.0
-          OS: ubuntu
-          OS_VARIANT: 20.04
-          ARCHIVE: 20201215
-        - PS_VERSION: 7.1.0
-          OS: ubuntu
-          OS_VARIANT: 18.04
-          ARCHIVE: 20201215
         # Build image default tagging
         - OS: ubuntu
           OS_VARIANT: 20.04
           TAG_PS_OS_TOOL: true
-        - PS_VERSION: 7.1.5
+        - PS_VERSION: 7.2.0
           OS: ubuntu
           OS_VARIANT: 20.04
           TOOL_VARIANT: git
           TAG_OS_TOOL: true
           TAG_TOOL: true
           TAG_LATEST: true
-        - PS_VERSION: 7.1.5
+        - PS_VERSION: 7.2.0
           OS: ubuntu
           OS_VARIANT: 20.04
           TOOL_VARIANT: git-sudo

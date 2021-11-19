@@ -18,7 +18,7 @@ jobs:
         PS_VERSION: [7.2.0, 7.1.5, 7.1.4]
         OS: [alpine]
         OS_VARIANT: ['3.13', '3.12', '3.11']
-        TOOL_VARIANT: [git, git-ssh, git-sudo]
+        TOOL_VARIANT: [git, git-sudo]
         include:
         # Base and build image full tag
         - PS_VERSION: 7.2.0
@@ -61,12 +61,6 @@ jobs:
         - OS: alpine
           OS_VARIANT: '3.13'
           TAG_PS_OS_TOOL: true
-        - PS_VERSION: 7.2.0
-          OS: alpine
-          OS_VARIANT: '3.13'
-          TOOL_VARIANT: git-ssh
-          TAG_OS_TOOL: true
-          TAG_TOOL: true
     env:
       PS_VERSION: ${{ matrix.PS_VERSION }}
       OS: ${{ matrix.OS }}
@@ -159,7 +153,7 @@ jobs:
         PS_VERSION: [7.2.0, 7.1.5, 7.1.4]
         OS: [ubuntu]
         OS_VARIANT: [20.04, 18.04]
-        TOOL_VARIANT: [git, git-ssh, git-sudo]
+        TOOL_VARIANT: [git, git-sudo]
         include:
         # Base and build image full tag
         - PS_VERSION: 7.2.0

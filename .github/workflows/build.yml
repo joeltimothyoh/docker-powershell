@@ -17,10 +17,14 @@ jobs:
       matrix:
         PS_VERSION: [7.2.0, 7.1.5, 7.1.4]
         OS: [alpine]
-        OS_VARIANT: ['3.13', '3.12', '3.11']
+        OS_VARIANT: ['3.14', '3.13', '3.12', '3.11']
         TOOL_VARIANT: [git, git-sudo]
         include:
         # Base and build image full tag
+        - PS_VERSION: 7.2.0
+          OS: alpine
+          OS_VARIANT: '3.14'
+          ARCHIVE: 20211116
         - PS_VERSION: 7.2.0
           OS: alpine
           OS_VARIANT: '3.13'
@@ -59,8 +63,16 @@ jobs:
           ARCHIVE: 20211005
         # Build image default tagging
         - OS: alpine
-          OS_VARIANT: '3.13'
+          OS_VARIANT: '3.14'
           TAG_PS_OS_TOOL: true
+        # Excluded configurations
+        exclude:
+        - PS_VERSION: 7.1.5
+          OS: alpine
+          OS_VARIANT: '3.14'
+        - PS_VERSION: 7.1.4
+          OS: alpine
+          OS_VARIANT: '3.14'
     env:
       PS_VERSION: ${{ matrix.PS_VERSION }}
       OS: ${{ matrix.OS }}

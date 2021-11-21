@@ -61,10 +61,6 @@ jobs:
           OS: alpine
           OS_VARIANT: '3.11'
           ARCHIVE: 20211005
-        # Build image default tagging
-        - OS: alpine
-          OS_VARIANT: '3.14'
-          TAG_PS_OS_TOOL: true
         # Excluded configurations
         exclude:
         - PS_VERSION: 7.1.5
@@ -78,9 +74,6 @@ jobs:
       OS: ${{ matrix.OS }}
       OS_VARIANT: ${{ matrix.OS_VARIANT }}
       TOOL_VARIANT: ${{ matrix.TOOL_VARIANT }}
-      TAG_PS_OS_TOOL: ${{ matrix.TAG_PS_OS_TOOL }}
-      TAG_OS_TOOL: ${{ matrix.TAG_OS_TOOL }}
-      TAG_TOOL: ${{ matrix.TAG_TOOL }}
       TAG_LATEST: ${{ matrix.TAG_LATEST }}
       BASE_REGISTRY_NAMESPACE: mcr.microsoft.com
       BASE_IMAGE_NAME: powershell
@@ -116,9 +109,6 @@ jobs:
         echo "OS: $OS"
         echo "OS_VARIANT: $OS_VARIANT"
         echo "TOOL_VARIANT: $TOOL_VARIANT"
-        echo "TAG_PS_OS_TOOL: $TAG_PS_OS_TOOL"
-        echo "TAG_OS_TOOL: $TAG_OS_TOOL"
-        echo "TAG_TOOL: $TAG_TOOL"
         echo "TAG_LATEST: $TAG_LATEST"
         echo "BASE_REGISTRY_NAMESPACE: $BASE_REGISTRY_NAMESPACE"
         echo "BASE_IMAGE_NAME: $BASE_IMAGE_NAME"
@@ -136,15 +126,6 @@ jobs:
             --build-arg BASE_IMAGE="${BASE_REGISTRY_NAMESPACE}/${BASE_IMAGE_NAME}:${BASE_TAG_FULL}" \
             "$BUILD_CONTEXT"
         docker tag "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${BUILD_TAG_FULL}" "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${PS_VERSION}-${OS}-${OS_VARIANT}-${TOOL_VARIANT}"
-        if [ "${TAG_PS_OS_TOOL}" = 'true' ]; then
-            docker tag "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${BUILD_TAG_FULL}" "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${PS_VERSION}-${OS}-${TOOL_VARIANT}"
-        fi
-        if [ "${TAG_OS_TOOL}" = 'true' ]; then
-            docker tag "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${BUILD_TAG_FULL}" "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${OS}-${TOOL_VARIANT}"
-        fi
-        if [ "${TAG_TOOL}" = 'true' ]; then
-            docker tag "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${BUILD_TAG_FULL}" "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${TOOL_VARIANT}"
-        fi
         if [ "${TAG_LATEST}" = 'true' ]; then
             docker tag "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${BUILD_TAG_FULL}" "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:latest"
         fi
@@ -193,30 +174,20 @@ jobs:
           OS_VARIANT: 18.04
           ARCHIVE: 20211005
         # Build image default tagging
-        - OS: ubuntu
-          OS_VARIANT: 20.04
-          TAG_PS_OS_TOOL: true
         - PS_VERSION: 7.2.0
           OS: ubuntu
           OS_VARIANT: 20.04
           TOOL_VARIANT: git
-          TAG_OS_TOOL: true
-          TAG_TOOL: true
           TAG_LATEST: true
         - PS_VERSION: 7.2.0
           OS: ubuntu
           OS_VARIANT: 20.04
           TOOL_VARIANT: git-sudo
-          TAG_OS_TOOL: true
-          TAG_TOOL: true
     env:
       PS_VERSION: ${{ matrix.PS_VERSION }}
       OS: ${{ matrix.OS }}
       OS_VARIANT: ${{ matrix.OS_VARIANT }}
       TOOL_VARIANT: ${{ matrix.TOOL_VARIANT }}
-      TAG_PS_OS_TOOL: ${{ matrix.TAG_PS_OS_TOOL }}
-      TAG_OS_TOOL: ${{ matrix.TAG_OS_TOOL }}
-      TAG_TOOL: ${{ matrix.TAG_TOOL }}
       TAG_LATEST: ${{ matrix.TAG_LATEST }}
       BASE_REGISTRY_NAMESPACE: mcr.microsoft.com
       BASE_IMAGE_NAME: powershell
@@ -252,9 +223,6 @@ jobs:
         echo "OS: $OS"
         echo "OS_VARIANT: $OS_VARIANT"
         echo "TOOL_VARIANT: $TOOL_VARIANT"
-        echo "TAG_PS_OS_TOOL: $TAG_PS_OS_TOOL"
-        echo "TAG_OS_TOOL: $TAG_OS_TOOL"
-        echo "TAG_TOOL: $TAG_TOOL"
         echo "TAG_LATEST: $TAG_LATEST"
         echo "BASE_REGISTRY_NAMESPACE: $BASE_REGISTRY_NAMESPACE"
         echo "BASE_IMAGE_NAME: $BASE_IMAGE_NAME"
@@ -272,15 +240,6 @@ jobs:
             --build-arg BASE_IMAGE="${BASE_REGISTRY_NAMESPACE}/${BASE_IMAGE_NAME}:${BASE_TAG_FULL}" \
             "$BUILD_CONTEXT"
         docker tag "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${BUILD_TAG_FULL}" "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${PS_VERSION}-${OS}-${OS_VARIANT}-${TOOL_VARIANT}"
-        if [ "${TAG_PS_OS_TOOL}" = 'true' ]; then
-            docker tag "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${BUILD_TAG_FULL}" "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${PS_VERSION}-${OS}-${TOOL_VARIANT}"
-        fi
-        if [ "${TAG_OS_TOOL}" = 'true' ]; then
-            docker tag "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${BUILD_TAG_FULL}" "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${OS}-${TOOL_VARIANT}"
-        fi
-        if [ "${TAG_TOOL}" = 'true' ]; then
-            docker tag "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${BUILD_TAG_FULL}" "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${TOOL_VARIANT}"
-        fi
         if [ "${TAG_LATEST}" = 'true' ]; then
             docker tag "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${BUILD_TAG_FULL}" "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:latest"
         fi

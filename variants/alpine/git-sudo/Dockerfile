@@ -14,4 +14,3 @@ RUN apk add --no-cache \
         git \
         sudo
 
-CMD ["pwsh"]

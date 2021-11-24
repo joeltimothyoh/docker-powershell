@@ -15,4 +15,3 @@ RUN apt-get update \
         git \
     && rm -rf /var/lib/apt/lists/*
 
-CMD ["pwsh"]

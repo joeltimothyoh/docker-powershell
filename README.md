@@ -2,8 +2,8 @@
 
 [![badge-build-github-workflows-img][]][badge-build-github-workflows-src] [![badge-image-dockerhub-version-badge][]][badge-image-dockerhub-tags-src] [![badge-image-dockerhub-size-badge][]][badge-image-dockerhub-tags-src]
 
-[badge-build-github-workflows-img]: https://github.com/joeltimothyoh/docker-powershell/workflows/build/badge.svg
-[badge-build-github-workflows-src]: https://github.com/joeltimothyoh/docker-powershell/actions
+[badge-build-github-workflows-img]: https://img.shields.io/github/workflow/status/joeltimothyoh/docker-powershell/build/master?&label=build&logo=github&style=flat-square
+[badge-build-github-workflows-src]: https://github.com/joeltimothyoh/docker-powershell/actions?query=branch%3Amaster
 [badge-image-dockerhub-src]: https://hub.docker.com/r/joeltimothyoh/powershell
 [badge-image-dockerhub-tags-src]: https://hub.docker.com/r/joeltimothyoh/powershell/tags
 [badge-image-dockerhub-version-badge]: https://img.shields.io/docker/v/joeltimothyoh/powershell/latest?label=v<tag>&style=flat-square

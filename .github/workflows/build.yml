@@ -107,7 +107,7 @@ jobs:
       BASE_REGISTRY_NAMESPACE: mcr.microsoft.com
       BASE_IMAGE_NAME: powershell
       BASE_TAG_FULL: ${{ matrix.PS_VERSION }}-${{ matrix.OS }}-${{ matrix.OS_VARIANT }}-${{ matrix.ARCHIVE }}
-      BUILD_REGISTRY_NAMESPACE: joeltimothyoh
+      BUILD_REGISTRY_NAMESPACE: ${{ vars.DOCKERHUB_REGISTRY_USER }}
       BUILD_IMAGE_NAME: powershell
       BUILD_TAG_FULL: ${{ matrix.PS_VERSION }}-${{ matrix.OS }}-${{ matrix.OS_VARIANT }}-${{ matrix.ARCHIVE }}-${{ matrix.TOOL_VARIANT }}
       BUILD_CONTEXT: variants/${{ matrix.OS }}/${{ matrix.TOOL_VARIANT }}
@@ -129,7 +129,7 @@ jobs:
       if: startsWith(github.ref, 'refs/heads/') || startsWith(github.ref, 'refs/tags/')
       run: echo "${DOCKERHUB_REGISTRY_PASSWORD}" | docker login -u "${DOCKERHUB_REGISTRY_USER}" --password-stdin
       env:
-        DOCKERHUB_REGISTRY_USER: joeltimothyoh
+        DOCKERHUB_REGISTRY_USER: ${{ vars.DOCKERHUB_REGISTRY_USER }}
         DOCKERHUB_REGISTRY_PASSWORD: ${{ secrets.DOCKERHUB_REGISTRY_PASSWORD }}
     - name: Build image
       run: |
@@ -233,7 +233,7 @@ jobs:
       BASE_REGISTRY_NAMESPACE: mcr.microsoft.com
       BASE_IMAGE_NAME: powershell
       BASE_TAG_FULL: ${{ matrix.PS_VERSION }}-${{ matrix.OS }}-${{ matrix.OS_VARIANT }}-${{ matrix.ARCHIVE }}
-      BUILD_REGISTRY_NAMESPACE: joeltimothyoh
+      BUILD_REGISTRY_NAMESPACE: ${{ vars.DOCKERHUB_REGISTRY_USER }}
       BUILD_IMAGE_NAME: powershell
       BUILD_TAG_FULL: ${{ matrix.PS_VERSION }}-${{ matrix.OS }}-${{ matrix.OS_VARIANT }}-${{ matrix.ARCHIVE }}-${{ matrix.TOOL_VARIANT }}
       BUILD_CONTEXT: variants/${{ matrix.OS }}/${{ matrix.TOOL_VARIANT }}
@@ -255,7 +255,7 @@ jobs:
       if: startsWith(github.ref, 'refs/heads/') || startsWith(github.ref, 'refs/tags/')
       run: echo "${DOCKERHUB_REGISTRY_PASSWORD}" | docker login -u "${DOCKERHUB_REGISTRY_USER}" --password-stdin
       env:
-        DOCKERHUB_REGISTRY_USER: joeltimothyoh
+        DOCKERHUB_REGISTRY_USER: ${{ vars.DOCKERHUB_REGISTRY_USER }}
         DOCKERHUB_REGISTRY_PASSWORD: ${{ secrets.DOCKERHUB_REGISTRY_PASSWORD }}
     - name: Build image
       run: |

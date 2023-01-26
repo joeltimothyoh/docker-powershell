@@ -126,7 +126,6 @@ jobs:
         docker info
         docker version
     - name: Login to docker registry
-      if: startsWith(github.ref, 'refs/heads/') || startsWith(github.ref, 'refs/tags/')
       run: echo "${DOCKERHUB_REGISTRY_PASSWORD}" | docker login -u "${DOCKERHUB_REGISTRY_USER}" --password-stdin
       env:
         DOCKERHUB_REGISTRY_USER: ${{ vars.DOCKERHUB_REGISTRY_USER }}
@@ -252,7 +251,6 @@ jobs:
         docker info
         docker version
     - name: Login to docker registry
-      if: startsWith(github.ref, 'refs/heads/') || startsWith(github.ref, 'refs/tags/')
       run: echo "${DOCKERHUB_REGISTRY_PASSWORD}" | docker login -u "${DOCKERHUB_REGISTRY_USER}" --password-stdin
       env:
         DOCKERHUB_REGISTRY_USER: ${{ vars.DOCKERHUB_REGISTRY_USER }}

@@ -306,6 +306,3 @@ jobs:
         repository: ${{ vars.DOCKERHUB_REGISTRY_USER }}/alpine
         short-description: ${{ github.event.repository.description }}
         readme-filepath: README.md
-      env:
-        DOCKERHUB_REGISTRY_USER: ${{ vars.DOCKERHUB_REGISTRY_USER }}
-        DOCKERHUB_REGISTRY_PASSWORD: ${{ secrets.DOCKERHUB_REGISTRY_PASSWORD }}

@@ -303,6 +303,6 @@ jobs:
       with:
         username: ${{ vars.DOCKERHUB_REGISTRY_USER }}
         password: ${{ secrets.DOCKERHUB_REGISTRY_PASSWORD }}
-        repository: ${{ vars.DOCKERHUB_REGISTRY_USER }}/alpine
+        repository: ${{ vars.DOCKERHUB_REGISTRY_USER }}/powershell
         short-description: ${{ github.event.repository.description }}
         readme-filepath: README.md

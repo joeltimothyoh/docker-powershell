@@ -12,7 +12,7 @@ on:
 
 jobs:
   alpine:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         PS_VERSION: [7.1.4, 7.1.5, 7.2.0, 7.2.1, 7.2.2]
@@ -168,7 +168,7 @@ jobs:
       if: always()
       run: docker logout
   ubuntu:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         PS_VERSION: [7.1.4, 7.1.5, 7.2.0, 7.2.1, 7.2.2]

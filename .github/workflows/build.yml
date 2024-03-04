@@ -216,6 +216,12 @@ jobs:
         export BASE_TAG_FULL_REGEX=$( echo "$BASE_TAG_FULL" | rev | sed -rn 's/^-*(.+)/\1/p' | rev )
         echo "BASE_TAG_FULL_REGEX: $BASE_TAG_FULL_REGEX"
         time docker pull "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${BASE_TAG_FULL_REGEX}" || true
+        export PS_VERSION_TRUNC=$( echo "$PS_VERSION" | sed -rn 's/([0-9]\.[0-9]).*/\1/p' )
+        # Get full PS version for PS 7.3 and later
+        if [ 1 -eq "$( echo "$PS_VERSION_TRUNC >= 7.3" | bc )" ]; then
+            export PS_VERSION_FULL=$( docker run -t --rm --entrypoint /bin/sh "${BASE_REGISTRY_NAMESPACE}/${BASE_IMAGE_NAME}:${BASE_TAG_FULL_REGEX}" -c "pwsh --version | sed -rn 's/PowerShell ([0-9]\.[0-9]\.[0-9])/\1/p'" | tr -d '\r' )
+            echo "PS_VERSION_FULL: $PS_VERSION_FULL"
+        fi
         time docker build \
             --cache-from "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${BASE_TAG_FULL_REGEX}" \
             -t "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${BASE_TAG_FULL_REGEX}" \
@@ -224,6 +230,9 @@ jobs:
         docker tag "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${BASE_TAG_FULL_REGEX}" "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${PS_VERSION}-${OS}-${OS_VARIANT}-${TOOL_VARIANT}"
         if [ "${TAG_LATEST}" = 'true' ]; then
             docker tag "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${BASE_TAG_FULL_REGEX}" "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:latest"
+        fi
+        if [ 1 -eq "$( echo "$PS_VERSION_TRUNC >= 7.3" | bc )" ]; then
+            docker tag "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${BASE_TAG_FULL_REGEX}" "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${PS_VERSION_FULL}-${OS}-${OS_VARIANT}-${TOOL_VARIANT}"
         fi
         docker images
         docker inspect "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${BASE_TAG_FULL_REGEX}"
@@ -368,6 +377,12 @@ jobs:
         export BASE_TAG_FULL_REGEX=$( echo "$BASE_TAG_FULL" | rev | sed -rn 's/^-*(.+)/\1/p' | rev )
         echo "BASE_TAG_FULL_REGEX: $BASE_TAG_FULL_REGEX"
         time docker pull "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${BASE_TAG_FULL_REGEX}" || true
+        export PS_VERSION_TRUNC=$( echo "$PS_VERSION" | sed -rn 's/([0-9]\.[0-9]).*/\1/p' )
+        # Get full PS version for PS 7.3 and later
+        if [ 1 -eq "$( echo "$PS_VERSION_TRUNC >= 7.3" | bc )" ]; then
+            export PS_VERSION_FULL=$( docker run -t --rm --entrypoint /bin/sh "${BASE_REGISTRY_NAMESPACE}/${BASE_IMAGE_NAME}:${BASE_TAG_FULL_REGEX}" -c "pwsh --version | sed -rn 's/PowerShell ([0-9]\.[0-9]\.[0-9])/\1/p'" | tr -d '\r' )
+            echo "PS_VERSION_FULL: $PS_VERSION_FULL"
+        fi
         time docker build \
             --cache-from "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${BASE_TAG_FULL_REGEX}" \
             -t "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${BASE_TAG_FULL_REGEX}" \
@@ -376,6 +391,9 @@ jobs:
         docker tag "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${BASE_TAG_FULL_REGEX}" "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${PS_VERSION}-${OS}-${OS_VARIANT}-${TOOL_VARIANT}"
         if [ "${TAG_LATEST}" = 'true' ]; then
             docker tag "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${BASE_TAG_FULL_REGEX}" "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:latest"
+        fi
+        if [ 1 -eq "$( echo "$PS_VERSION_TRUNC >= 7.3" | bc )" ]; then
+            docker tag "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${BASE_TAG_FULL_REGEX}" "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${PS_VERSION_FULL}-${OS}-${OS_VARIANT}-${TOOL_VARIANT}"
         fi
         docker images
         docker inspect "${BUILD_REGISTRY_NAMESPACE}/${BUILD_IMAGE_NAME}:${BASE_TAG_FULL_REGEX}"
